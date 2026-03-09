@@ -1,0 +1,84 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# PyTorch / Transformers
+*.pth
+*.pt
+*.bin
+*.safetensors
+cache/
+model_cache/
+
+# Virtual Environment
+venv/
+ENV/
+env/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Results
+results/*.csv
+results/*.md
+!results/.gitkeep
+
+# macOS
+.DS_Store
+
+# Build artifacts
+*.o
+*.dylib
+*.so
+*.dll
+*.a
+*.lib
+*.exe
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+Makefile
+*.ninja
+.ninja_*
+build/
+compile_commands.json
+*.cmake
+!CMakeLists.txt
+
+# C/C++ build artifacts
+*.obj
+*.out
+*.d
+*.dep
+*.dSYM/
+*.gch
+*.pch
+
+# Translation script
+translate_comments.py
+
+# Data (除 if needed to submit)
+# ml-100k/
+

@@ -1,0 +1,68 @@
+# 性能测试配置文件
+
+# 数据集配置
+dataset:
+  data_dir: "ml-100k"
+  seed: 42
+
+# 测试模式配置
+test_modes:
+  # 快速测试（用于验证）
+  quick:
+    n_users: 3
+    n_candidates: 10
+    n_repeats: 3
+    duration_seconds: null
+    warmup_runs: 1
+    quality_k_list: [10]  # NDCG@10, MRR@10, Recall@10
+  
+  # 快速测试2倍（20个候选）
+  quick2x:
+    n_users: 3
+    n_candidates: 20
+    n_repeats: 3
+    duration_seconds: null
+    warmup_runs: 1
+  
+  # 中等测试（50个候选，更少用户和重复）
+  medium:
+    n_users: 3
+    n_candidates: 50
+    n_repeats: 2
+    duration_seconds: null
+    warmup_runs: 1
+  
+  # 小样本测试（日常开发）
+  small:
+    n_users: 10
+    n_candidates: 50
+    n_repeats: 5
+    duration_seconds: 30
+    warmup_runs: 2
+    quality_k_list: [10, 50]  # NDCG@10, MRR@10, Recall@50
+  
+  # 正式测试（完整评估）
+  full:
+    n_users: 50
+    n_candidates_list: [50, 100, 200]
+    n_repeats: 10
+    duration_seconds: 60
+    warmup_runs: 3
+    quality_k_list: [10, 50]  # NDCG@10, MRR@10, Recall@50
+
+# 参数网格配置
+param_grid:
+  use_simd: [false, true]
+  batch_sizes: [1, 2, 4, 8]       # Python层batch大小
+  simd_threads: [1, 4, 8]          # C++层SIMD线程数
+  n_candidates: [50, 100, 200]
+
+# 输出配置
+output:
+  results_dir: "results"
+  csv_filename: "raw_data.csv"
+  report_filename: "baseline_report.md"
+
+# 硬件信息（用于报告）
+hardware:
+  auto_detect: true
